@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" role="img" aria-labelledby="title desc">
+  <title id="title">The Relationship</title>
+  <desc id="desc">Capa roxa e rosa do projeto de companheira virtual com inteligência artificial</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#120d26"/>
+      <stop offset="0.48" stop-color="#34205d"/>
+      <stop offset="1" stop-color="#7d245f"/>
+    </linearGradient>
+    <linearGradient id="heart" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c89bff"/>
+      <stop offset="1" stop-color="#ff5fa2"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#e7c9ff" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#e7c9ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="360" rx="28" fill="url(#bg)"/>
+  <circle cx="1060" cy="160" r="190" fill="url(#glow)"/>
+  <circle cx="1150" cy="25" r="95" fill="#ff5fa2" opacity=".09"/>
+  <circle cx="72" cy="320" r="150" fill="#9c65ff" opacity=".09"/>
+  <path d="M1020 119c-29-41-96-23-96 33 0 54 96 112 96 112s96-58 96-112c0-56-67-74-96-33z" fill="#ff5fa2" opacity=".18" filter="url(#shadow)"/>
+  <path d="M1020 119c-29-41-96-23-96 33 0 54 96 112 96 112s96-58 96-112c0-56-67-74-96-33z" fill="url(#heart)"/>
+  <path d="M1020 145c-16-23-54-13-54 19 0 30 54 63 54 63s54-33 54-63c0-32-38-42-54-19z" fill="#211438" opacity=".55"/>
+  <g fill="#fff" opacity=".7">
+    <circle cx="885" cy="82" r="4"/>
+    <circle cx="1168" cy="286" r="5"/>
+    <circle cx="1205" cy="112" r="3"/>
+    <path d="M870 250h28M884 236v28" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <text x="92" y="150" fill="#f8f3ff" font-family="Segoe UI, Arial, sans-serif" font-size="68" font-weight="750" letter-spacing="-1">The Relationship</text>
+  <text x="96" y="205" fill="#d9c8f5" font-family="Segoe UI, Arial, sans-serif" font-size="25">conversa • memória • voz • conexão</text>
+  <rect x="94" y="245" width="535" height="2" rx="1" fill="#c89bff" opacity=".55"/>
+  <text x="96" y="292" fill="#fff" opacity=".8" font-family="Segoe UI, Arial, sans-serif" font-size="19">Uma história que continua quando você volta.</text>
+</svg>

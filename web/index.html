@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Relationship</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/",
+        "@pixiv/three-vrm": "https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@3.5.5/lib/three-vrm.module.min.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">♡</div>
+        <div class="brand-copy">
+          <div class="brand-title">The Relationship</div>
+          <div id="brandSubtitle" class="brand-subtitle">Sua companheira virtual</div>
+        </div>
+      </div>
+
+      <button id="newChat" class="new-chat">＋ Nova conversa</button>
+
+      <div class="sidebar-section-title">CONVERSA</div>
+      <div id="conversationLabel" class="conversation-item active">♡ Conversa atual</div>
+
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-note">
+        Memória persistente local<br />
+        Voz neural + Whisper + VRM
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="top-copy">
+          <div class="top-title">The Relationship</div>
+          <div id="statusText" class="top-status"><span class="dot"></span> iniciando…</div>
+        </div>
+        <div class="top-actions">
+          <button id="memoryButton" class="memory-button" type="button" title="Ver memória persistente">🧠 Memória</button>
+          <button id="voiceToggle" class="voice-toggle active" type="button" title="Ativar ou desativar a voz">🔊 Voz neural</button>
+          <div class="model-pill">GPT-OSS 120B</div>
+        </div>
+      </header>
+
+      <section class="workspace">
+        <section class="avatar-panel">
+          <div id="avatarLoading" class="avatar-loading">Carregando o avatar…</div>
+          <canvas id="avatarCanvas"></canvas>
+          <div class="avatar-controls">
+            <div class="camera-presets">
+              <button id="resetAvatar" type="button" title="Recentrar avatar">↺</button>
+              <button data-camera-preset="full" type="button" class="preset-btn active" title="Corpo inteiro">Corpo</button>
+              <button data-camera-preset="medium" type="button" class="preset-btn" title="Meio corpo">Meio</button>
+              <button data-camera-preset="face" type="button" class="preset-btn" title="Focar no rosto">Rosto</button>
+            </div>
+            <span>mouse olha • roda dá zoom</span>
+          </div>
+        </section>
+
+        <section class="chat-panel">
+          <div id="chatMessages" class="chat-messages" tabindex="0" aria-label="Histórico da conversa"></div>
+
+          <div class="composer-wrap">
+            <form id="chatForm" class="composer">
+              <button id="micButton" type="button" class="mic-button" title="Falar por voz">🎙</button>
+              <textarea id="messageInput" rows="1" placeholder="Converse com sua personagem…" aria-label="Mensagem"></textarea>
+              <button id="sendButton" type="submit" aria-label="Enviar mensagem">➤</button>
+            </form>
+            <div class="composer-hint">Enter envia • Shift+Enter quebra a linha • 🎙 transforma sua fala em texto</div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div id="setupOverlay" class="modal-overlay setup-overlay hidden" aria-hidden="true">
+    <section class="modal-card setup-card" role="dialog" aria-modal="true" aria-labelledby="setupTitle">
+      <div class="setup-symbol">♡</div>
+      <div class="eyebrow">THE RELATIONSHIP</div>
+      <h1 id="setupTitle">Como ela vai se chamar?</h1>
+      <p>
+        Escolha o nome da sua personagem. Ele será salvo na memória local e continuará igual
+        quando você fechar e abrir o programa novamente.
+      </p>
+      <form id="setupForm" class="setup-form">
+        <label for="characterNameInput">Nome da personagem</label>
+        <input id="characterNameInput" maxlength="32" autocomplete="off" placeholder="Ex.: Luna" required />
+        <div id="setupError" class="form-error" aria-live="polite"></div>
+        <button id="setupSubmit" type="submit">Começar</button>
+      </form>
+      <div class="privacy-note">Conversas e memórias ficam salvas localmente neste computador.</div>
+    </section>
+  </div>
+
+  <div id="memoryOverlay" class="modal-overlay hidden" aria-hidden="true">
+    <section class="modal-card memory-card" role="dialog" aria-modal="true" aria-labelledby="memoryTitle">
+      <div class="modal-header">
+        <div>
+          <div class="eyebrow">MEMÓRIA PERSISTENTE</div>
+          <h2 id="memoryTitle">O que ficou guardado</h2>
+        </div>
+        <button id="memoryClose" class="icon-button" type="button" aria-label="Fechar memória">×</button>
+      </div>
+
+      <div class="memory-stats">
+        <div><strong id="memoryFactCount">0</strong><span>memórias</span></div>
+        <div><strong id="memoryMessageCount">0</strong><span>mensagens</span></div>
+        <div><strong id="memorySessionCount">0</strong><span>conversas</span></div>
+      </div>
+
+      <div id="memoryList" class="memory-list"></div>
+
+      <div class="memory-path-wrap">
+        <span>Dados locais:</span>
+        <code id="memoryPath">—</code>
+      </div>
+
+      <div class="danger-zone">
+        <div>
+          <strong>Apagar todos os dados</strong>
+          <span>Remove nome, histórico e memórias deste computador.</span>
+        </div>
+        <button id="resetAllData" type="button">Apagar tudo</button>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

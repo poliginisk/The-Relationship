@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.venv/
+venv/
+env/
+
+# Segredos e configurações locais
+.env
+.env.*
+!.env.example
+
+# Memória e dados locais
+*.db
+*.db-shm
+*.db-wal
+
+# Build
+build/
+dist/
+*.spec
+
+# Editores / sistema
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Modelos VRM não são publicados sem autorização de redistribuição
+*.vrm
